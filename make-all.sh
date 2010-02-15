@@ -13,7 +13,7 @@ echo "FreeBASIC linux x86"
 fbc 1kbrl.bas -x bin/1kbrl-fb.x86
 
 echo "FreeBASIC Wine cross-compilation for win32"
-wine "C:\Program Files\FreeBASIC\fbc.exe" 1kbrl.bas -x bin/1kbrl-fb.exe
+wine "C:\Program Files\FreeBASIC\fbc.exe" 1kbrl.bas -x bin/1kbrl-fb-win32.exe
 
 echo "Done."
 
