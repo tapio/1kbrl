@@ -51,7 +51,8 @@ void gen(int seed) {
 		for (int i = 0; i < MAPSIZE; i++) {
 			if (i == 0 || i == MAPSIZE-1 || j == 0 || j == MAPSIZE-1 ||
 			  rand() % 10 == 0) lvl[i][j] = 1;
-			else if (rand() % 20 == 0) lvl[i][j] = 2;
+			else if (rand() % 20 == 0) lvl[i][j] = COIN;
+			else if (rand() % 100 == 0) lvl[i][j] = TORCH;
 			else lvl[i][j] = 0;
 		}
 	}
@@ -86,7 +87,7 @@ void draw() {
 
 int main() {
 	gen(level);
-	std::cout << GREEN << "Welcome!" << std::endl;
+	std::cout << GREEN << "Welcome! Use WASD to move." << std::endl;
 	while (true) {
 		// Drawing
 		draw();
@@ -101,12 +102,12 @@ int main() {
 		// Collisions
 		if (lvl[x][y] & WALL) { x = oldx; y = oldy; }
 		else if (lvl[x][y] & COIN) { coins++; lvl[x][y] ^= COIN; }
-		else if (lvl[x][y] & TORCH) { torch++; lvl[x][y] ^= TORCH; }
+		else if (lvl[x][y] & TORCH) { torch+=20; lvl[x][y] ^= TORCH; }
 		else if (lvl[x][y] & STAIRS_UP) gen(++level);
 		// Die
 		if (--torch <= 0) break;
 	}
-	
+
 	return 0;
 }
 
