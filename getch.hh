@@ -23,4 +23,7 @@ int getch() {
 	tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
 	return ch;
 }
+bool kbhit() {
+	return true;
+}
 #endif
